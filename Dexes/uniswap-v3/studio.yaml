@@ -1,0 +1,18 @@
+name: Samudai boilerplate
+description: A top-secret research project to the moon
+startBlock: 19582555 # pool deployment blockumber - 19582555
+userId: auth0%7C65fb07c3cd606f2e14152b75
+projectId: 4dbbbf68-0c91-4b1f-ba7f-ad01479c5e05
+network: Ethereum
+user: Jane-doe
+execution: parallel
+schema:
+  file: ./studio.schema.ts
+Resources:
+  - Name: univ3Pool #sUSDeUSDT
+    Abi: src/abis/v3pool.json
+    Type: contract/event
+    Address: "0x867B321132B18B5BF3775c0D9040D1872979422E"
+    Triggers:
+      - Event: Swap(address indexed,address indexed,int256,int256,uint160,uint128,int24)
+        Handler: src/pool/Swap/index.SwapHandler
