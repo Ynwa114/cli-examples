@@ -1,0 +1,24 @@
+name: Project Apollo
+description: A top-secret research project to the moon
+startBlock: 229287898
+userId: XXXXXXXX-XXXX-XXXX-XXXXXXXX-XXXXXXXX
+projectId: XXXXXXXX-XXXX-XXXX-XXXXXXXX-XXXXXXXX
+network: Arbitrum
+user: Jane-doe
+schema:
+  file: ./studio.schema.ts
+execution: sequential
+Resources:
+  - Name: pool
+    Abi: src/abis/pool.json
+    Type: contract/event
+    Address: "0x3B592D62647A448fa7BdD579ecC312cCf5a02Dae"
+    Triggers:
+      - Event: AddLiquidity(address indexed,address,uint256[],uint256)
+        Handler: src/handlers/pool/AddLiquidity.AddLiquidityHandler
+      - Event: RemoveLiquidity(address indexed,address,uint256)
+        Handler: src/handlers/pool/RemoveLiquidity.RemoveLiquidityHandler
+      - Event: RemoveLiquiditySingle(address indexed,address,uint256,uint256,uint256)
+        Handler: src/handlers/pool/RemoveLiquiditySingle.RemoveLiquiditySingleHandler
+      - Event: Swap(address indexed,address,uint256,uint256,uint256,uint256)
+        Handler: src/handlers/pool/Swap.SwapHandler
