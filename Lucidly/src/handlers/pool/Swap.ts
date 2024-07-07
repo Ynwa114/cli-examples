@@ -15,7 +15,7 @@ import { Swap, ISwap } from "../../types/schema";
 export const SwapHandler = async (
   context: IEventContext,
   bind: IBind,
-  secrets: ISecrets
+  secrets: ISecrets,
 ) => {
   // Implement your event handler logic for Swap here
 
@@ -32,7 +32,6 @@ export const SwapHandler = async (
   swap ??= await swapDB.create({
     id: swapId,
 
-    caller: caller.toString(),
     receiver: receiver.toString(),
 
     tokenIn: tokenIn.toString(),
@@ -42,9 +41,7 @@ export const SwapHandler = async (
     amountOut: amountOut.toString(),
 
     transaction_hash: transaction.transaction_hash.toString(),
-    log_index: log.log_index.toString(),
     block_timestamp: block.block_timestamp.toString(),
-    block_hash: block.block_hash.toString(),
   });
 
   await swapDB.save(swap);

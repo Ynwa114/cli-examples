@@ -31,24 +31,25 @@ export const RemoveLiquiditySingleHandler = async (
     id: removeLiquidityId,
   });
 
+  console.log(amountOut.toString());
+
+  console.log(token.toString());
+
   removeLiquidity ??= await removeLiquidityDB.create({
     id: removeLiquidityId,
 
-    caller: caller.toString(),
     receiver: receiver.toString(),
 
     type: "single",
 
-    token: token.toString(),
+    addressToken: token.toString(),
 
-    amountOut: amountOut.toString(),
+    amount: amountOut.toString(),
 
     lpAmount: lpAmount.toString(),
 
     transaction_hash: transaction.transaction_hash.toString(),
-    log_index: log.log_index.toString(),
     block_timestamp: block.block_timestamp.toString(),
-    block_hash: block.block_hash.toString(),
   });
 
   await removeLiquidityDB.save(removeLiquidity);

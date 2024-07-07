@@ -6,7 +6,6 @@ export class Swap {
   static entity = "Swap";
   static schema = {
     id: { type: "String", index: true },
-    caller: "String",
     receiver: "String",
     tokenIn: "String",
     tokenOut: "String",
@@ -14,8 +13,6 @@ export class Swap {
     amountOut: "String",
     block_timestamp: "string",
     transaction_hash: "string",
-    transaction_index: "string",
-    log_index: "string",
     entityId: { type: "String", index: true },
     blocknumber: { type: "Number", index: true },
     chainId: { type: "String", index: true },
@@ -27,13 +24,10 @@ export class Deposit {
   static entity = "Deposit";
   static schema = {
     id: { type: "String", index: true },
-    caller: "String",
     receiver: "String",
     lpAmount: "String",
     block_timestamp: "string",
     transaction_hash: "string",
-    transaction_index: "string",
-    log_index: "string",
     entityId: { type: "String", index: true },
     blocknumber: { type: "Number", index: true },
     chainId: { type: "String", index: true },
@@ -45,7 +39,6 @@ export class RemoveLiquidity {
   static entity = "RemoveLiquidity";
   static schema = {
     id: { type: "String", index: true },
-    caller: "String",
     receiver: "String",
     type: "String",
     lpAmount: "String",
@@ -53,8 +46,6 @@ export class RemoveLiquidity {
     amount: "String",
     block_timestamp: "string",
     transaction_hash: "string",
-    transaction_index: "string",
-    log_index: "string",
     entityId: { type: "String", index: true },
     blocknumber: { type: "Number", index: true },
     chainId: { type: "String", index: true },
@@ -67,7 +58,6 @@ import { String } from "@blockflow-labs/utils";
 export interface ISwap extends Document {
   id: String;
 
-  caller: String;
   receiver: String;
 
   tokenIn: String;
@@ -78,8 +68,6 @@ export interface ISwap extends Document {
 
   block_timestamp: string;
   transaction_hash: string;
-  transaction_index: string;
-  log_index: string;
   blocknumber: String;
   entityId: String;
   instanceId: String;
@@ -89,15 +77,12 @@ export interface ISwap extends Document {
 export interface IDeposit extends Document {
   id: String;
 
-  caller: String;
   receiver: String;
 
   lpAmount: String;
 
   block_timestamp: string;
   transaction_hash: string;
-  transaction_index: string;
-  log_index: string;
   blocknumber: String;
   entityId: String;
   instanceId: String;
@@ -107,7 +92,6 @@ export interface IDeposit extends Document {
 export interface IRemoveLiquidity extends Document {
   id: String;
 
-  caller: String;
   receiver: String;
   type: String;
 
@@ -119,8 +103,6 @@ export interface IRemoveLiquidity extends Document {
 
   block_timestamp: string;
   transaction_hash: string;
-  transaction_index: string;
-  log_index: string;
   blocknumber: String;
   entityId: String;
   instanceId: String;

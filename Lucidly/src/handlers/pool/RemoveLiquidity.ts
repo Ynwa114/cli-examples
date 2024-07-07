@@ -15,7 +15,7 @@ import { RemoveLiquidity, IRemoveLiquidity } from "../../types/schema";
 export const RemoveLiquidityHandler = async (
   context: IEventContext,
   bind: IBind,
-  secrets: ISecrets
+  secrets: ISecrets,
 ) => {
   // Implement your event handler logic for RemoveLiquidity here
 
@@ -34,16 +34,13 @@ export const RemoveLiquidityHandler = async (
   removeLiquidity ??= await removeLiquidityDB.create({
     id: removeLiquidityId,
 
-    caller: caller.toString(),
     receiver: receiver.toString(),
     type: "all",
 
     lpAmount: lpAmount.toString(),
 
     transaction_hash: transaction.transaction_hash.toString(),
-    log_index: log.log_index.toString(),
     block_timestamp: block.block_timestamp.toString(),
-    block_hash: block.block_hash.toString(),
   });
 
   await removeLiquidityDB.save(removeLiquidity);

@@ -15,7 +15,7 @@ import { Deposit, IDeposit } from "../../types/schema";
 export const AddLiquidityHandler = async (
   context: IEventContext,
   bind: IBind,
-  secrets: ISecrets
+  secrets: ISecrets,
 ) => {
   // Implement your event handler logic for AddLiquidity here
 
@@ -32,15 +32,12 @@ export const AddLiquidityHandler = async (
   deposit ??= await depositDB.create({
     id: depositId,
 
-    caller: caller.toString(),
     receiver: receiver.toString(),
 
     lpAmount: lpAmount.toString(),
 
     transaction_hash: transaction.transaction_hash.toString(),
-    log_index: log.log_index.toString(),
     block_timestamp: block.block_timestamp.toString(),
-    block_hash: block.block_hash.toString(),
   });
 
   await depositDB.save(deposit);
